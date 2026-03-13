@@ -33,43 +33,39 @@ export default function ClientDashboard() {
     }
 
     if (loading) {
-        return <div className="min-h-screen flex items-center justify-center bg-white dark:bg-zinc-950 text-zinc-400 text-xs uppercase tracking-widest">Loading Secure Environment...</div>;
+        return <div className="min-h-screen flex items-center justify-center bg-white text-zinc-400 text-xs uppercase tracking-widest font-bold animate-pulse">Loading...</div>;
     }
 
     if (!client) return null;
 
     return (
-        <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col selection:bg-emerald-100 font-sans">
+        <div className="min-h-screen bg-white flex flex-col selection:bg-red-100 font-sans">
             {/* Navbar */}
-            <nav className="w-full bg-emerald-50 dark:bg-emerald-950/40 border-b border-emerald-100 dark:border-emerald-900/50 px-4 sm:px-8 py-4">
+            <nav className="w-full bg-red-600 border-b border-red-700 px-4 sm:px-8 py-4 shadow-sm">
                 <div className="max-w-6xl mx-auto flex flex-row justify-between items-center gap-2">
                     <div
                         onClick={() => router.push('/')}
-                        className="cursor-pointer flex items-center gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[11px] tracking-widest sm:tracking-[0.2em] text-emerald-700 dark:text-emerald-400 uppercase whitespace-nowrap"
+                        className="cursor-pointer flex items-center gap-2"
                     >
-                        <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-emerald-500 rounded-full shrink-0" />
-                        Client Node
+                        <img src="https://ik.imagekit.io/dypkhqxip/Screenshot_2026-03-13_at_21.00.59-removebg-preview.png" alt="Logo" className="h-8 w-auto brightness-0 invert" />
                     </div>
-                    <div className="flex gap-3 sm:gap-6 items-center overflow-x-auto no-scrollbar">
+                    <div className="flex gap-3 sm:gap-6 items-center">
                         <button
-                            className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 border-b-2 border-emerald-600 whitespace-nowrap"
+                            className="text-[10px] font-bold uppercase tracking-wider text-white border-b-2 border-white whitespace-nowrap"
                         >
                             Dashboard
                         </button>
                         <button
                             onClick={() => router.push('/client/tasks')}
-                            className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-zinc-400 hover:text-emerald-600 transition-colors whitespace-nowrap"
+                            className="text-[10px] font-bold uppercase tracking-wider text-white/60 hover:text-white transition-colors whitespace-nowrap"
                         >
                             Tasks
                         </button>
                         <button
                             onClick={() => router.push('/client/documents')}
-                            className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-zinc-400 hover:text-emerald-600 transition-colors whitespace-nowrap"
+                            className="text-[10px] font-bold uppercase tracking-wider text-white/60 hover:text-white transition-colors whitespace-nowrap"
                         >
-                            Docs
-                        </button>
-                        <button className="hidden sm:block text-[10px] font-normal uppercase tracking-wider text-emerald-700 dark:text-emerald-400 hover:opacity-70 transition-opacity whitespace-nowrap">
-                            Support
+                            Documents
                         </button>
                     </div>
                 </div>
@@ -79,17 +75,17 @@ export default function ClientDashboard() {
                 <div className="max-w-5xl mx-auto">
                     <header className="mb-8 sm:mb-12 flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-0">
                         <div>
-                            <span className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2 block">Project Dashboard</span>
-                            <h1 className="text-2xl sm:text-3xl font-normal tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">
+                            <span className="text-[10px] uppercase tracking-widest text-zinc-400 mb-2 block italic">Project Overview</span>
+                            <h1 className="text-2xl sm:text-3xl font-normal tracking-tight text-zinc-900 mb-2">
                                 {client.name}
                             </h1>
-                            <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-sm leading-relaxed truncate">
-                                {client.id} • {client.contactName || "No Contact"}
+                            <p className="text-zinc-500 text-sm max-w-sm font-medium">
+                                ID: {client.id} • {client.contactName}
                             </p>
                         </div>
                         <button
                             onClick={logout}
-                            className="w-full sm:w-auto px-6 py-2 border border-zinc-100 dark:border-zinc-900 text-zinc-500 text-[10px] uppercase tracking-widest font-bold rounded-lg hover:border-emerald-200 transition-all text-center"
+                            className="w-full sm:w-auto px-6 py-2 border border-red-600 text-red-600 text-[10px] uppercase tracking-widest font-bold rounded-none hover:bg-zinc-50 transition-all text-center"
                         >
                             Sign Out
                         </button>
@@ -97,27 +93,27 @@ export default function ClientDashboard() {
 
                     {/* Stats Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
-                        <div className="p-5 sm:p-6 rounded-xl border border-zinc-100 dark:border-zinc-900 bg-zinc-50/20 dark:bg-zinc-900/10">
+                        <div className="p-5 sm:p-6 rounded-none border border-zinc-100 bg-white shadow-sm">
                             <h3 className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3 sm:mb-4">Total Budget</h3>
-                            <div className="text-xl sm:text-2xl font-light text-zinc-900 dark:text-zinc-100">
+                            <div className="text-xl sm:text-2xl font-light text-zinc-900">
                                 {client.totalBudget ? `₹${client.totalBudget}` : "—"}
                             </div>
                         </div>
-                        <div className="p-5 sm:p-6 rounded-xl border border-zinc-100 dark:border-zinc-900 bg-zinc-50/20 dark:bg-zinc-900/10">
+                        <div className="p-5 sm:p-6 rounded-none border border-zinc-100 bg-white shadow-sm">
                             <h3 className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3 sm:mb-4">Amount Paid</h3>
-                            <div className="text-xl sm:text-2xl font-light text-emerald-600 dark:text-emerald-500">
+                            <div className="text-xl sm:text-2xl font-normal text-red-600">
                                 {client.amountPaid ? `₹${client.amountPaid}` : "—"}
                             </div>
                         </div>
-                        <div className="p-5 sm:p-6 rounded-xl border border-zinc-100 dark:border-zinc-900 bg-zinc-50/20 dark:bg-zinc-900/10">
+                        <div className="p-5 sm:p-6 rounded-none border border-zinc-100 bg-white shadow-sm">
                             <h3 className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3 sm:mb-4">Start Date</h3>
-                            <div className="text-md sm:text-lg font-light text-zinc-700 dark:text-zinc-300">
+                            <div className="text-md sm:text-lg font-light text-zinc-700">
                                 {client.startDate ? new Date(client.startDate).toLocaleDateString() : "Pending"}
                             </div>
                         </div>
-                        <div className="p-5 sm:p-6 rounded-xl border border-zinc-100 dark:border-zinc-900 bg-zinc-50/20 dark:bg-zinc-900/10">
-                            <h3 className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3 sm:mb-4">Target Completion</h3>
-                            <div className="text-md sm:text-lg font-light text-zinc-700 dark:text-zinc-300">
+                        <div className="p-5 sm:p-6 rounded-none border border-zinc-100 bg-white shadow-sm">
+                            <h3 className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-3 sm:mb-4">Completion Date</h3>
+                            <div className="text-md sm:text-lg font-light text-zinc-700">
                                 {client.endDate ? new Date(client.endDate).toLocaleDateString() : "TBD"}
                             </div>
                         </div>
@@ -125,8 +121,8 @@ export default function ClientDashboard() {
 
                     {/* Profile & Developer Info */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-                        <div className="p-6 sm:p-8 rounded-2xl border border-zinc-100 dark:border-zinc-900 bg-white dark:bg-zinc-950 shadow-sm">
-                            <h3 className="text-[11px] font-bold uppercase tracking-widest text-emerald-600 mb-6">Profile Details</h3>
+                        <div className="p-6 sm:p-8 rounded-none border border-zinc-100 bg-white shadow-sm">
+                            <h3 className="text-[11px] font-bold uppercase tracking-widest text-red-600 mb-6">Profile Details</h3>
                             <div className="space-y-4">
                                 <div>
                                     <span className="text-[10px] uppercase tracking-wider text-zinc-400 block mb-1">Contact Email</span>
@@ -143,8 +139,8 @@ export default function ClientDashboard() {
                             </div>
                         </div>
 
-                        <div className="p-6 sm:p-8 rounded-2xl border border-zinc-100 dark:border-zinc-900 bg-zinc-50/40 dark:bg-zinc-900/20">
-                            <h3 className="text-[11px] font-bold uppercase tracking-widest text-emerald-600 mb-6">Assigned Technical Team</h3>
+                        <div className="p-6 sm:p-8 rounded-none border border-zinc-100 bg-red-50/20">
+                            <h3 className="text-[11px] font-bold uppercase tracking-widest text-red-600 mb-6">Assigned Team</h3>
                             {client.developers && client.developers.length > 0 ? (
                                 <div className="space-y-4">
                                     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
@@ -164,9 +160,9 @@ export default function ClientDashboard() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="bg-emerald-50 dark:bg-emerald-950/20 p-4 rounded-lg border border-emerald-100 dark:border-emerald-900/30 mt-4">
-                                        <p className="text-[11px] text-emerald-700/80 dark:text-emerald-400/80 leading-relaxed">
-                                            Your assigned team is managing your project's technical architecture. For urgent technical queries, please reach out via the support channel.
+                                    <div className="bg-red-50 p-4 rounded-none border border-red-100 mt-4">
+                                        <p className="text-[11px] text-red-600 font-medium leading-relaxed">
+                                            The team is working on your project. Contact us if you have any questions.
                                         </p>
                                     </div>
                                 </div>
@@ -181,9 +177,9 @@ export default function ClientDashboard() {
                 </div>
             </main>
 
-            <footer className="w-full bg-emerald-50 dark:bg-emerald-950/40 border-t border-emerald-100 dark:border-emerald-900/50 px-4 sm:px-8 py-6">
-                <div className="max-w-6xl mx-auto text-[9px] sm:text-[10px] text-emerald-700/40 dark:text-emerald-400/20 font-normal tracking-wider uppercase text-center sm:text-left">
-                    © {new Date().getFullYear()} CSAPP Precision • Encrypted Connection
+            <footer className="w-full bg-red-600 border-t border-red-700 px-4 sm:px-8 py-10">
+                <div className="max-w-6xl mx-auto text-[10px] text-white font-bold tracking-wider uppercase text-center sm:text-left">
+                    © {new Date().getFullYear()} Redlix Studio • Secure Connection
                 </div>
             </footer>
         </div>

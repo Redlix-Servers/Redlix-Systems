@@ -46,10 +46,9 @@ export default function DeveloperSidebar() {
     ];
 
     return (
-        <aside className="w-64 h-screen bg-zinc-50 dark:bg-zinc-950 border-r border-emerald-100 dark:border-emerald-900/50 flex flex-col fixed left-0 top-0 z-50 font-sans">
+        <aside className="w-64 h-screen bg-white border-r border-red-700 flex flex-col fixed left-0 top-0 z-50 font-sans">
             <div className="p-8">
-                <h2 className="text-[11px] font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-[0.2em]">Nexus Dev</h2>
-                <div className="h-1 w-6 bg-emerald-500 mt-2 rounded-full" />
+                <img src="https://ik.imagekit.io/dypkhqxip/Screenshot_2026-03-13_at_21.00.59-removebg-preview.png" alt="Logo" className="h-8 w-auto brightness-0" />
             </div>
 
             <nav className="flex-1 px-4 space-y-1">
@@ -59,12 +58,12 @@ export default function DeveloperSidebar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-[12px] font-medium tracking-tight transition-all duration-300
+                            className={`flex items-center gap-3 px-4 py-3 rounded-none text-[12px] font-medium tracking-tight transition-all duration-300
               ${isActive
-                                    ? "bg-emerald-100/50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50"
-                                    : "text-zinc-500 hover:text-emerald-600 dark:hover:text-emerald-400 border border-transparent"}`}
+                                    ? "bg-red-50 text-red-600 border border-red-100"
+                                    : "text-zinc-500 hover:text-red-600 border border-transparent"}`}
                         >
-                            <span className={isActive ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-400"}>
+                            <span className={isActive ? "text-red-600" : "text-zinc-400"}>
                                 {link.icon}
                             </span>
                             {link.name}
@@ -73,12 +72,12 @@ export default function DeveloperSidebar() {
                 })}
             </nav>
 
-            <div className="p-6 border-t border-emerald-100 dark:border-emerald-900/50">
-                <div className="px-4 py-3 bg-emerald-50/50 dark:bg-emerald-950/20 rounded-xl border border-emerald-100 dark:border-emerald-900/50 flex items-center gap-3">
-                    <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center font-bold text-white text-xs shadow-lg shadow-emerald-500/10">D</div>
+            <div className="p-6 border-t border-zinc-100">
+                <div className="px-4 py-3 bg-red-50 rounded-none border border-red-100 flex items-center gap-3">
+                    <div className="w-8 h-8 bg-red-600 flex items-center justify-center font-bold text-white text-xs">D</div>
                     <div className="overflow-hidden">
-                        <p className="text-zinc-800 dark:text-zinc-200 text-xs font-medium truncate">Developer</p>
-                        <p className="text-emerald-600/60 dark:text-emerald-400/40 text-[9px] uppercase tracking-widest font-bold">Authorized Node</p>
+                        <p className="text-zinc-800 text-xs font-semibold truncate">Developer</p>
+                        <p className="text-red-600/60 text-[9px] uppercase tracking-widest font-bold">Developer Mode</p>
                     </div>
                 </div>
             </div>

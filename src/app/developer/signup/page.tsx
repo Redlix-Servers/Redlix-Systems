@@ -164,7 +164,7 @@ export default function DeveloperSignup() {
 
                     <button
                         onClick={() => router.back()}
-                        className="mt-8 mx-auto text-[11px] text-zinc-400 hover:text-emerald-600 transition-colors flex items-center gap-2 group"
+                        className="mt-8 mx-auto text-[11px] text-zinc-400 hover:text-red-600 transition-colors flex items-center gap-2 group"
                     >
                         <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Entry
                     </button>

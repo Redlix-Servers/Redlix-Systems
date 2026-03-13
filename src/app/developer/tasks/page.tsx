@@ -33,28 +33,28 @@ export default function DeveloperTasksPage() {
     }, []);
 
     return (
-        <div className="flex bg-white dark:bg-zinc-950 min-h-screen font-sans selection:bg-emerald-100">
+        <div className="flex bg-white min-h-screen font-sans selection:bg-red-100">
             <DeveloperSidebar />
 
             <main className="flex-1 ml-64 p-12">
                 <header className="mb-16">
-                    <h1 className="text-2xl font-normal tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">
-                        Task <span className="text-emerald-600">Center</span>
+                    <h1 className="text-2xl font-normal tracking-tight text-zinc-900 mb-2">
+                        Task <span className="text-red-600">Center</span>
                     </h1>
-                    <p className="text-zinc-500 dark:text-zinc-400 text-xs font-normal">
-                        Directives and assignments from the central administration.
+                    <p className="text-zinc-500 text-xs font-normal">
+                        View and manage your assigned tasks.
                     </p>
                 </header>
 
-                <div className="bg-white dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-sm">
+                <div className="bg-white border border-zinc-100 rounded-none overflow-hidden shadow-sm">
                     {loading ? (
-                        <div className="p-12 text-center text-zinc-400 italic text-sm">Syncing directives...</div>
+                        <div className="p-12 text-center text-zinc-400 italic text-sm">Checking tasks...</div>
                     ) : tasks.length === 0 ? (
-                        <div className="p-12 text-center text-zinc-400 italic text-sm">No active directives found.</div>
+                        <div className="p-12 text-center text-zinc-400 italic text-sm font-bold uppercase tracking-widest">No tasks assigned.</div>
                     ) : (
-                        <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
+                        <div className="divide-y divide-zinc-100">
                             {tasks.map((task) => (
-                                <div key={task.id} className="p-8 hover:bg-zinc-50/50 dark:hover:bg-zinc-900/10 transition-colors">
+                                <div key={task.id} className="p-8 hover:bg-zinc-50 transition-colors">
                                     <div className="flex justify-between items-start mb-4">
                                         <div>
                                             <div className="flex items-center gap-3 mb-2">
@@ -85,10 +85,10 @@ export default function DeveloperTasksPage() {
                                                         }
                                                     }}
                                                     className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-widest border-none focus:ring-0 cursor-pointer
-                                                    ${task.status === "PENDING" ? "bg-amber-50 dark:bg-amber-950/30 text-amber-600" :
-                                                            task.status === "IN_PROGRESS" ? "bg-blue-50 dark:bg-blue-950/30 text-blue-600" :
-                                                                task.status === "COMPLETED" ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600" :
-                                                                    "bg-zinc-100 dark:bg-zinc-800 text-zinc-500"}`}
+                                                    ${task.status === "PENDING" ? "bg-amber-50 text-amber-600" :
+                                                            task.status === "IN_PROGRESS" ? "bg-blue-50 text-blue-600" :
+                                                                task.status === "COMPLETED" ? "bg-red-50 text-red-600" :
+                                                                    "bg-zinc-100 text-zinc-500"}`}
                                                 >
                                                     <option value="PENDING">Pending</option>
                                                     <option value="IN_PROGRESS">In Progress</option>
@@ -96,7 +96,7 @@ export default function DeveloperTasksPage() {
                                                     <option value="BLOCKED">Blocked</option>
                                                 </select>
                                             </div>
-                                            <div className="text-[10px] text-zinc-400 font-mono">
+                                            <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">
                                                 ID: {task.id} • Issued: {new Date(task.createdAt).toLocaleDateString()}
                                             </div>
                                         </div>
@@ -105,17 +105,17 @@ export default function DeveloperTasksPage() {
                                                 href={task.demoLink}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-widest rounded-lg transition-colors flex items-center gap-2"
+                                                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold uppercase tracking-widest rounded-none transition-colors flex items-center gap-2"
                                             >
-                                                View Demo
+                                                View Link
                                                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                                 </svg>
                                             </a>
                                         )}
                                     </div>
-                                    <p className="text-[12px] text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                                        {task.description || "No parameters specified."}
+                                    <p className="text-[12px] text-zinc-600 font-medium leading-relaxed">
+                                        {task.description || "No details provided."}
                                     </p>
                                 </div>
                             ))}
