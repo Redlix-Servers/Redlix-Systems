@@ -37,8 +37,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
             <div className="flex items-center">
-              <a href="https://res.cloudinary.com/dsqqrpzfl/image/upload/v1770405388/icon-removebg-preview_v3cxkb.png" target="_blank" rel="noopener noreferrer" className="p-2 transition-transform hover:scale-110">
-                <img src="https://ik.imagekit.io/dypkhqxip/Screenshot_2026-03-13_at_21.00.59-removebg-preview.png" alt="External Logo" className="h-10 w-auto brightness-0 invert" />
+              <a href="/" className="p-2 transition-transform hover:scale-105">
+                <img src="https://ik.imagekit.io/dypkhqxip/Screenshot_2026-03-13_at_21.00.59-removebg-preview.png" alt="Logo" className="h-14 w-auto brightness-0 invert" />
               </a>
             </div>
             <div className="flex gap-4 items-center">
