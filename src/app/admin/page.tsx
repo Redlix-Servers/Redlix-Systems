@@ -66,7 +66,7 @@ export default function AdminDashboard() {
             });
 
             if (res.ok) {
-                alert("Directive issued successfully.");
+                alert("Task assigned successfully.");
                 setSelectedDev(null);
                 setTaskTitle("");
                 setTaskDesc("");
@@ -144,11 +144,11 @@ export default function AdminDashboard() {
                             <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800 text-[12px]">
                                 {loading ? (
                                     <tr>
-                                        <td colSpan={4} className="px-8 py-20 text-center text-zinc-400 font-normal italic">Retrieving network records...</td>
+                                        <td colSpan={4} className="px-8 py-20 text-center text-zinc-400 font-normal italic">Loading developers...</td>
                                     </tr>
                                 ) : developers.length === 0 ? (
                                     <tr>
-                                        <td colSpan={4} className="px-8 py-20 text-center text-zinc-400 font-normal italic">Empty registry.</td>
+                                        <td colSpan={4} className="px-8 py-20 text-center text-zinc-400 font-normal italic uppercase tracking-widest text-[10px] font-bold">No developers joined yet.</td>
                                     </tr>
                                 ) : (
                                     developers.map((dev) => (
@@ -158,17 +158,17 @@ export default function AdminDashboard() {
                                             </td>
                                             <td className="px-8 py-5 font-mono text-[10px] text-zinc-400 tracking-tighter uppercase">{dev.id}</td>
                                             <td className="px-8 py-5">
-                                                <span className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-500 font-medium">
-                                                    <span className="w-1 h-1 bg-emerald-500 rounded-full" />
-                                                    Authorized
+                                                <span className="inline-flex items-center gap-1.5 text-zinc-600 font-bold uppercase tracking-widest text-[10px]">
+                                                    <span className="w-1.5 h-1.5 bg-red-600" />
+                                                    Active
                                                 </span>
                                             </td>
                                             <td className="px-8 py-5 text-right">
                                                 <button
                                                     onClick={() => setSelectedDev(dev)}
-                                                    className="text-[11px] font-medium text-emerald-600 hover:text-emerald-700 underline underline-offset-4 decoration-emerald-200 dark:decoration-emerald-900"
+                                                    className="text-[11px] font-bold text-red-600 uppercase tracking-widest hover:underline underline-offset-4"
                                                 >
-                                                    Issue Directive
+                                                    Assign Task
                                                 </button>
                                             </td>
                                         </tr>
