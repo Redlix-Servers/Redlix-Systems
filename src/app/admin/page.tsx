@@ -126,19 +126,25 @@ export default function AdminDashboard() {
                     ))}
                 </div>
 
-                <section className="bg-white border border-zinc-100 rounded-none overflow-hidden shadow-sm">
-                    <div className="px-8 py-5 border-b border-zinc-100 flex justify-between items-center bg-zinc-50/30">
-                        <h3 className="text-[13px] font-semibold text-zinc-800 uppercase tracking-wide">Developers</h3>
+                <section className="bg-white border border-zinc-100 border-t-2 border-t-red-600 rounded-none overflow-hidden shadow-xl shadow-red-600/5">
+                    <div className="px-8 py-6 border-b border-zinc-100 flex justify-between items-center bg-white">
+                        <div className="flex items-center gap-3">
+                            <div className="w-1 h-4 bg-red-600" />
+                            <h3 className="text-[14px] font-bold text-zinc-900 uppercase tracking-[0.1em]">Developer Registry</h3>
+                        </div>
+                        <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2.5 py-1 uppercase tracking-widest">
+                            {developers.length} Total Users
+                        </span>
                     </div>
 
                     <div className="overflow-x-auto">
                         <table className="w-full text-left">
                             <thead>
-                                <tr className="border-b border-zinc-100 dark:border-zinc-800 bg-zinc-50/10 dark:bg-zinc-900/5">
-                                    <th className="px-8 py-4 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Email Address</th>
-                                    <th className="px-8 py-4 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">ID</th>
-                                    <th className="px-8 py-4 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Status</th>
-                                    <th className="px-8 py-4 text-[10px] font-bold text-zinc-400 uppercase tracking-widest text-right">Actions</th>
+                                <tr className="border-b border-zinc-900 bg-zinc-900">
+                                    <th className="px-8 py-4 text-[10px] font-bold text-white uppercase tracking-widest">User Email</th>
+                                    <th className="px-8 py-4 text-[10px] font-bold text-white uppercase tracking-widest">Unique Identifier</th>
+                                    <th className="px-8 py-4 text-[10px] font-bold text-white uppercase tracking-widest">Current Status</th>
+                                    <th className="px-8 py-4 text-[10px] font-bold text-white uppercase tracking-widest text-right">Management</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800 text-[12px]">
@@ -152,11 +158,11 @@ export default function AdminDashboard() {
                                     </tr>
                                 ) : (
                                     developers.map((dev) => (
-                                        <tr key={dev.id} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20 transition-colors group">
+                                        <tr key={dev.id} className="hover:bg-red-50/30 transition-all duration-200 group border-b border-zinc-50 last:border-0">
                                             <td className="px-8 py-5">
-                                                <span className="text-zinc-700 dark:text-zinc-300 font-medium">{dev.email}</span>
+                                                <span className="text-zinc-900 font-bold tracking-tight text-[13px]">{dev.email}</span>
                                             </td>
-                                            <td className="px-8 py-5 font-mono text-[10px] text-zinc-400 tracking-tighter uppercase">{dev.id}</td>
+                                            <td className="px-8 py-5 font-bold text-[9px] text-zinc-400 uppercase tracking-[0.2em]">{dev.id}</td>
                                             <td className="px-8 py-5">
                                                 <span className="inline-flex items-center gap-1.5 text-zinc-600 font-bold uppercase tracking-widest text-[10px]">
                                                     <span className="w-1.5 h-1.5 bg-red-600" />
