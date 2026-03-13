@@ -195,17 +195,17 @@ export default function AdminClientsPage() {
     }, []);
 
     return (
-        <div className="flex bg-white dark:bg-zinc-950 min-h-screen font-sans selection:bg-emerald-100">
+        <div className="flex bg-white min-h-screen font-sans selection:bg-red-100 italic-none">
             <AdminSidebar />
 
-            <main className="flex-1 ml-64 p-12">
+            <main className="flex-1 ml-64 p-12 text-zinc-900">
                 <header className="mb-16 flex justify-between items-end">
                     <div>
-                        <h1 className="text-2xl font-normal tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">
-                            Client <span className="text-emerald-600">Registry</span>
+                        <h1 className="text-2xl font-normal tracking-tight text-zinc-900 mb-2">
+                            Client <span className="text-red-600">Registry</span>
                         </h1>
-                        <p className="text-zinc-500 dark:text-zinc-400 text-xs font-normal">
-                            Manage partner entities, contact details, and project timelines.
+                        <p className="text-zinc-500 text-xs font-normal">
+                            Manage your partners and project timelines.
                         </p>
                     </div>
                     <button
@@ -216,23 +216,23 @@ export default function AdminClientsPage() {
                                 setIsCreating(true);
                             }
                         }}
-                        className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-normal uppercase tracking-[0.2em] rounded-lg transition-all"
+                        className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-all shadow-lg shadow-red-600/10"
                     >
-                        {isCreating ? "Cancel" : "Add New Entity"}
+                        {isCreating ? "Cancel" : "Add New Client"}
                     </button>
                 </header>
 
                 {isCreating && (
-                    <div className="mb-12 bg-zinc-50 dark:bg-zinc-900/40 p-8 rounded-2xl border border-emerald-100 dark:border-emerald-900/50 animate-in fade-in slide-in-from-top-4">
-                        <h3 className="text-zinc-900 dark:text-zinc-100 text-[11px] font-bold uppercase tracking-widest mb-6">
-                            {isEditing ? `Edit Client: ${formData.id}` : "New Client Configuration"}
+                    <div className="mb-12 bg-white p-8 rounded-none border border-red-600 border-t-4 animate-in fade-in slide-in-from-top-4 shadow-2xl">
+                        <h3 className="text-zinc-900 text-[11px] font-bold uppercase tracking-widest mb-6 border-b border-zinc-100 pb-4">
+                            {isEditing ? `Edit Client: ${formData.id}` : "Registration Form"}
                         </h3>
                         <form onSubmit={handleSubmit} className="max-w-4xl space-y-6">
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Company Details */}
                                 <div className="space-y-4">
-                                    <h4 className="text-[10px] uppercase tracking-widest text-emerald-600 font-bold mb-2">Company Information</h4>
+                                    <h4 className="text-[10px] uppercase tracking-widest text-red-600 font-bold mb-4">Company Details</h4>
                                     <div>
                                         <label className="text-[10px] uppercase tracking-widest text-zinc-400 mb-1.5 block">Client ID</label>
                                         <AuthInput
@@ -276,7 +276,7 @@ export default function AdminClientsPage() {
 
                                 {/* Contact Details */}
                                 <div className="space-y-4">
-                                    <h4 className="text-[10px] uppercase tracking-widest text-emerald-600 font-bold mb-2">Contact Details</h4>
+                                    <h4 className="text-[10px] uppercase tracking-widest text-red-600 font-bold mb-4">Contact Details</h4>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <label className="text-[10px] uppercase tracking-widest text-zinc-400 mb-1.5 block">Mobile Number</label>
@@ -304,7 +304,7 @@ export default function AdminClientsPage() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Project Timeline */}
                                 <div className="space-y-4">
-                                    <h4 className="text-[10px] uppercase tracking-widest text-emerald-600 font-bold mb-2">Project Timeline</h4>
+                                    <h4 className="text-[10px] uppercase tracking-widest text-red-600 font-bold mb-4">Project Timeline</h4>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <label className="text-[10px] uppercase tracking-widest text-zinc-400 mb-1.5 block">Start Date</label>
@@ -329,7 +329,7 @@ export default function AdminClientsPage() {
 
                                 {/* Financials & Assignment */}
                                 <div className="space-y-4">
-                                    <h4 className="text-[10px] uppercase tracking-widest text-emerald-600 font-bold mb-2">Financials & Allocation</h4>
+                                    <h4 className="text-[10px] uppercase tracking-widest text-red-600 font-bold mb-4">Financials & Allocation</h4>
                                     <div className="grid grid-cols-2 gap-4 mb-4">
                                         <div>
                                             <label className="text-[10px] uppercase tracking-widest text-zinc-400 mb-1.5 block">Total Budget (₹)</label>
@@ -369,7 +369,7 @@ export default function AdminClientsPage() {
                                                                 setDeveloperIds(developerIds.filter(id => id !== dev.id));
                                                             }
                                                         }}
-                                                        className="w-3.5 h-3.5 text-emerald-600 rounded border-zinc-300 focus:ring-emerald-500"
+                                                        className="w-3.5 h-3.5 text-red-600 rounded-none border-zinc-300 focus:ring-red-500"
                                                     />
                                                     <span className="text-[11px] text-zinc-700 dark:text-zinc-300">{dev.email}</span>
                                                 </label>
@@ -389,43 +389,43 @@ export default function AdminClientsPage() {
                             <div className="pt-4 flex justify-end">
                                 <AuthButton
                                     loading={createLoading}
-                                    className="px-8 bg-zinc-900 dark:bg-zinc-100 hover:bg-emerald-600 dark:hover:bg-emerald-500 text-white dark:text-zinc-900 text-[10px] font-normal uppercase tracking-widest h-10 rounded-lg transition-colors border-none"
+                                    className="px-12 bg-red-600 hover:bg-red-700 text-white text-[10px] font-bold uppercase tracking-widest h-12 rounded-none transition-all border-none shadow-lg shadow-red-600/20"
                                 >
-                                    {isEditing ? "Update Entity" : "Register Entity"}
+                                    {isEditing ? "Save Changes" : "Register Client"}
                                 </AuthButton>
                             </div>
                         </form>
                     </div>
                 )}
 
-                <div className="bg-white dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-sm">
+                <div className="bg-white border border-zinc-100 border-t-2 border-t-red-600 rounded-none overflow-hidden shadow-xl shadow-red-600/5">
                     {loading ? (
-                        <div className="p-12 text-center text-zinc-400 italic text-sm">Scanning client database...</div>
+                        <div className="p-12 text-center text-zinc-400 italic text-sm">Searching records...</div>
                     ) : clients.length === 0 ? (
-                        <div className="p-12 text-center text-zinc-400 italic text-sm">No registered entities found.</div>
+                        <div className="p-12 text-center text-zinc-400 font-bold uppercase tracking-widest text-xs">No clients found.</div>
                     ) : (
                         <div className="overflow-x-auto">
                             <table className="w-full text-left">
-                                <thead className="bg-zinc-50 dark:bg-zinc-900/50 border-b border-zinc-100 dark:border-zinc-800">
+                                <thead className="bg-zinc-900 border-b border-zinc-900">
                                     <tr>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">ID</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Company</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Contact</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Timeline</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Developer</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400 text-right">Actions</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">ID</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Company</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Project Manager</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Timeline</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Assigned Team</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white text-right">Settings</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
                                     {clients.map((client) => (
-                                        <tr key={client.id} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/10 transition-colors group">
-                                            <td className="px-6 py-5 text-[11px] font-mono text-emerald-600 dark:text-emerald-400">{client.id}</td>
+                                        <tr key={client.id} className="hover:bg-red-50/30 transition-all duration-200 group border-b border-zinc-50 last:border-0">
+                                            <td className="px-6 py-5 text-[11px] font-bold text-red-600 uppercase tracking-widest">{client.id}</td>
                                             <td className="px-6 py-5">
-                                                <div className="text-[13px] font-medium text-zinc-900 dark:text-zinc-100">{client.name}</div>
-                                                {client.email && <div className="text-[10px] text-zinc-400 mt-1">{client.email}</div>}
+                                                <div className="text-[13px] font-bold text-zinc-900 tracking-tight">{client.name}</div>
+                                                {client.email && <div className="text-[10px] text-zinc-400 font-medium mt-1">{client.email}</div>}
                                             </td>
                                             <td className="px-6 py-5">
-                                                <div className="text-[12px] text-zinc-700 dark:text-zinc-300">{client.contactName || "-"}</div>
+                                                <div className="text-[12px] text-zinc-800 font-bold">{client.contactName || "-"}</div>
                                                 {client.mobile && <div className="text-[10px] text-zinc-400 mt-1">{client.mobile}</div>}
                                             </td>
                                             <td className="px-6 py-5">
@@ -434,11 +434,11 @@ export default function AdminClientsPage() {
                                                     {client.endDate && <span>End: {new Date(client.endDate).toLocaleDateString()}</span>}
                                                 </div>
                                             </td>
-                                            <td className="px-6 py-5 text-[11px] text-zinc-500 dark:text-zinc-400">
+                                            <td className="px-6 py-5 text-[11px] text-zinc-500">
                                                 {client.developers && client.developers.length > 0 ? (
                                                     <div className="flex flex-wrap gap-1">
                                                         {client.developers.map((dev: any, index: number) => (
-                                                            <span key={dev.id || index} className="bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 px-2 py-1 rounded border border-emerald-100 dark:border-emerald-900/50">
+                                                            <span key={dev.id || index} className="bg-red-50 text-red-700 px-2 py-1 text-[9px] font-bold uppercase tracking-widest border border-red-100">
                                                                 {dev.email}
                                                             </span>
                                                         ))}
@@ -448,24 +448,20 @@ export default function AdminClientsPage() {
                                                 )}
                                             </td>
                                             <td className="px-6 py-5 text-right">
-                                                <div className="flex justify-end gap-2">
+                                                <div className="flex justify-end gap-3 px-2">
                                                     <button
                                                         onClick={() => handleEdit(client)}
-                                                        className="p-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 rounded-full transition-colors"
+                                                        className="text-[10px] font-bold text-zinc-800 uppercase tracking-widest hover:text-red-600 transition-colors"
                                                         title="Edit Client"
                                                     >
-                                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                                        </svg>
+                                                        Edit
                                                     </button>
                                                     <button
                                                         onClick={() => handleDelete(client.id)}
-                                                        className="p-2 bg-red-50 dark:bg-red-950/30 hover:bg-red-100 dark:hover:bg-red-900/50 text-red-600 dark:text-red-400 rounded-full transition-colors"
+                                                        className="text-[10px] font-bold text-red-600 uppercase tracking-widest hover:text-red-700 transition-colors"
                                                         title="Delete Client"
                                                     >
-                                                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                        </svg>
+                                                        Delete
                                                     </button>
                                                 </div>
                                             </td>

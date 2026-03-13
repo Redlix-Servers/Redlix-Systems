@@ -36,63 +36,63 @@ export default function AdminReportsPage() {
     }, []);
 
     return (
-        <div className="flex bg-white dark:bg-zinc-950 min-h-screen font-sans selection:bg-emerald-100">
+        <div className="flex bg-white min-h-screen font-sans selection:bg-red-100 italic-none">
             <AdminSidebar />
 
-            <main className="flex-1 ml-64 p-12">
+            <main className="flex-1 ml-64 p-12 text-zinc-900">
                 <header className="mb-16">
-                    <h1 className="text-2xl font-normal tracking-tight text-zinc-900 dark:text-zinc-100 mb-2">
-                        Project <span className="text-emerald-600">Reports</span>
+                    <h1 className="text-2xl font-normal tracking-tight text-zinc-900 mb-2">
+                        Project <span className="text-red-600">Reports</span>
                     </h1>
-                    <p className="text-zinc-500 dark:text-zinc-400 text-xs font-normal">
-                        Global status feed from all active developer nodes.
+                    <p className="text-zinc-500 text-xs font-normal">
+                        Stay updated with progress logs from all active developers.
                     </p>
                 </header>
 
-                <div className="bg-white dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-sm">
+                <div className="bg-white border border-zinc-100 border-t-2 border-t-red-600 rounded-none overflow-hidden shadow-xl shadow-red-600/5">
                     {loading ? (
-                        <div className="p-12 text-center text-zinc-400 italic text-sm">Synchronizing report feed...</div>
+                        <div className="p-12 text-center text-zinc-400 italic text-sm">Searching records...</div>
                     ) : reports.length === 0 ? (
-                        <div className="p-12 text-center text-zinc-400 italic text-sm">No reports submitted yet.</div>
+                        <div className="p-12 text-center text-zinc-400 font-bold uppercase tracking-widest text-xs">No reports submitted yet.</div>
                     ) : (
                         <div className="overflow-x-auto">
                             <table className="w-full text-left">
-                                <thead className="bg-zinc-50 dark:bg-zinc-900/50 border-b border-zinc-100 dark:border-zinc-800">
+                                <thead className="bg-zinc-900 border-b border-zinc-900">
                                     <tr>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Date</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Project / Developer</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Status</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Summary</th>
-                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Issues</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Date Sent</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Client / Dev</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Current Status</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Work Summary</th>
+                                        <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-widest text-white">Logged Issues</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
                                     {reports.map((report) => (
-                                        <tr key={report.id} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/10 transition-colors group">
-                                            <td className="px-6 py-5 text-[11px] font-mono text-zinc-500">
+                                        <tr key={report.id} className="hover:bg-red-50/30 transition-all duration-200 group border-b border-zinc-50 last:border-0">
+                                            <td className="px-6 py-5 text-[11px] font-bold text-zinc-500 uppercase tracking-widest">
                                                 {new Date(report.createdAt).toLocaleDateString()}
-                                                <div className="text-[9px] text-zinc-400">{new Date(report.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                                                <div className="text-[9px] text-zinc-400 font-bold">{new Date(report.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                                             </td>
                                             <td className="px-6 py-5">
-                                                <div className="text-[13px] font-medium text-emerald-600 dark:text-emerald-400">{report.client.name}</div>
-                                                <div className="text-[10px] text-zinc-400 mt-0.5">{report.developer.email}</div>
+                                                <div className="text-[13px] font-bold text-red-600 tracking-tight">{report.client.name}</div>
+                                                <div className="text-[10px] text-zinc-400 font-bold mt-0.5">{report.developer.email}</div>
                                             </td>
                                             <td className="px-6 py-5">
-                                                <span className={`px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-widest
-                                                    ${report.status === "ON_TRACK" ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600" :
-                                                        report.status === "DELAYED" ? "bg-amber-50 dark:bg-amber-950/30 text-amber-600" :
-                                                            report.status === "BLOCKED" ? "bg-red-50 dark:bg-red-950/30 text-red-600" :
-                                                                "bg-blue-50 dark:bg-blue-950/30 text-blue-600"}`}>
+                                                <span className={`px-2 py-1 rounded-none text-[9px] font-bold uppercase tracking-[0.1em] border
+                                                    ${report.status === "ON_TRACK" ? "bg-white text-emerald-600 border-emerald-100" :
+                                                        report.status === "DELAYED" ? "bg-white text-amber-600 border-amber-100" :
+                                                            report.status === "BLOCKED" ? "bg-red-600 text-white border-red-600" :
+                                                                "bg-white text-blue-600 border-blue-100"}`}>
                                                     {report.status.replace("_", " ")}
                                                 </span>
                                             </td>
                                             <td className="px-6 py-5">
-                                                <p className="text-[11px] text-zinc-600 dark:text-zinc-300 max-w-xs line-clamp-2" title={report.summary}>
+                                                <p className="text-[11px] text-zinc-600 font-medium max-w-xs line-clamp-2 leading-relaxed" title={report.summary}>
                                                     {report.summary}
                                                 </p>
                                                 {report.documentUrl && (
-                                                    <a href={report.documentUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-1 text-[9px] text-emerald-500 hover:text-emerald-600 underline">
-                                                        View Data
+                                                    <a href={report.documentUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-2 text-[9px] text-red-600 font-bold uppercase tracking-widest hover:underline underline-offset-4">
+                                                        Attachment
                                                     </a>
                                                 )}
                                             </td>
